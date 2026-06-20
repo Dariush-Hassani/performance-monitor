@@ -1,13 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\codes\\codes\\performance-monitor\\",
+  "WorkspaceRootPath": "D:\\codes\\codes\\performance-monitor\\performance-monitor-core\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5361450C-503F-4E03-8AAB-F3F69E4CB259}|performance-monitor\\performance-monitor.csproj|d:\\codes\\codes\\performance-monitor\\performance-monitor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5361450C-503F-4E03-8AAB-F3F69E4CB259}|performance-monitor\\performance-monitor.csproj|d:\\codes\\codes\\performance-monitor\\performance-monitor-core\\performance-monitor\\hardwaremonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5361450C-503F-4E03-8AAB-F3F69E4CB259}|performance-monitor\\performance-monitor.csproj|solutionrelative:performance-monitor\\hardwaremonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5361450C-503F-4E03-8AAB-F3F69E4CB259}|performance-monitor\\performance-monitor.csproj|d:\\codes\\codes\\performance-monitor\\performance-monitor-core\\performance-monitor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5361450C-503F-4E03-8AAB-F3F69E4CB259}|performance-monitor\\performance-monitor.csproj|solutionrelative:performance-monitor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5361450C-503F-4E03-8AAB-F3F69E4CB259}|performance-monitor\\performance-monitor.csproj|d:\\codes\\codes\\performance-monitor\\performance-monitor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{5361450C-503F-4E03-8AAB-F3F69E4CB259}|performance-monitor\\performance-monitor.csproj|D:\\codes\\codes\\performance-monitor\\performance-monitor-core\\performance-monitor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{5361450C-503F-4E03-8AAB-F3F69E4CB259}|performance-monitor\\performance-monitor.csproj|solutionrelative:performance-monitor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -18,36 +22,51 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\codes\\codes\\performance-monitor\\performance-monitor-core\\performance-monitor\\Form1.cs",
+              "RelativeDocumentMoniker": "performance-monitor\\Form1.cs",
+              "ToolTip": "D:\\codes\\codes\\performance-monitor\\performance-monitor-core\\performance-monitor\\Form1.cs",
+              "RelativeToolTip": "performance-monitor\\Form1.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAADgvz0AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-19T18:02:13.283Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HardwareMonitor.cs",
+              "DocumentMoniker": "D:\\codes\\codes\\performance-monitor\\performance-monitor-core\\performance-monitor\\HardwareMonitor.cs",
+              "RelativeDocumentMoniker": "performance-monitor\\HardwareMonitor.cs",
+              "ToolTip": "D:\\codes\\codes\\performance-monitor\\performance-monitor-core\\performance-monitor\\HardwareMonitor.cs",
+              "RelativeToolTip": "performance-monitor\\HardwareMonitor.cs",
+              "ViewState": "AgIAALUAAAAAAAAAAADgv9UAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-20T12:02:56.346Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "D:\\codes\\codes\\performance-monitor\\performance-monitor\\Form1.cs",
+              "DocumentMoniker": "D:\\codes\\codes\\performance-monitor\\performance-monitor-core\\performance-monitor\\Form1.cs",
               "RelativeDocumentMoniker": "performance-monitor\\Form1.cs",
-              "ToolTip": "D:\\codes\\codes\\performance-monitor\\performance-monitor\\Form1.cs [Design]",
+              "ToolTip": "D:\\codes\\codes\\performance-monitor\\performance-monitor-core\\performance-monitor\\Form1.cs [Design]",
               "RelativeToolTip": "performance-monitor\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-19T20:58:49.711Z",
               "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "D:\\codes\\codes\\performance-monitor\\performance-monitor\\Form1.cs",
-              "RelativeDocumentMoniker": "performance-monitor\\Form1.cs",
-              "ToolTip": "D:\\codes\\codes\\performance-monitor\\performance-monitor\\Form1.cs",
-              "RelativeToolTip": "performance-monitor\\Form1.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAAwEgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T18:02:13.283Z",
-              "EditorCaption": ""
             }
           ]
         }

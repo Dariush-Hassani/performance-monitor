@@ -1,6 +1,7 @@
 ﻿using Microsoft.Web.WebView2.WinForms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
-using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -9,11 +10,13 @@ namespace performance_monitor
     public partial class Form1 : Form
     {
         private WebView2 webView;
+        private HardwareMonitor _hardwareMonitor;
 
         public Form1()
         {
             InitializeComponent();
             this.Load += Form1_Load;
+            _hardwareMonitor = new HardwareMonitor();
         }
 
         private async void Form1_Load(object sender, EventArgs e)
@@ -35,62 +38,74 @@ namespace performance_monitor
             webView.CoreWebView2.OpenDevToolsWindow();
         }
 
-
         private void CoreWebView2_WebMessageReceived(object sender, Microsoft.Web.WebView2.Core.CoreWebView2WebMessageReceivedEventArgs e)
         {
+            string id = null;
+
             try
             {
-                // ✨ تغییر مهم اینجاست ✨
-                // به جای TryGetWebMessageAsString از WebMessageAsJson استفاده شد
                 string jsonMessage = e.WebMessageAsJson;
 
-                // اگر جاوااسکریپت رشته متنی ساده (String) بفرستد، کوتیشن های اضافه را حذف می کند
-                if (jsonMessage.StartsWith("\"") && jsonMessage.EndsWith("\""))
+                if (string.IsNullOrEmpty(jsonMessage) || jsonMessage == "null") return;
+
+                JObject requestMessage = JObject.Parse(jsonMessage);
+
+                id = requestMessage["id"]?.ToString();
+                string endpoint = requestMessage["endpoint"]?.ToString();
+
+                object data = null;
+                string error = null;
+
+                switch (endpoint)
                 {
-                    jsonMessage = jsonMessage.Trim('"');
-                    // برای حالتی که با JSON.stringify سمت جاوااسکریپت فرستاده شده باشد
-                    jsonMessage = jsonMessage.Replace("\\\"", "\"");
-                }
-
-                var request = JsonSerializer.Deserialize<WebMessageDto>(jsonMessage);
-
-                if (request == null || string.IsNullOrEmpty(request.id)) return;
-
-                object responseData = null;
-
-                switch (request.endpoint)
-                {
-                    case "getSystemInfo":
-                        responseData = new { os = "Windows 11", ram = "16GB", cpu = "Core i7" };
+                    case "getCpuStats":
+                        data = _hardwareMonitor.GetCpuStats();
                         break;
-                    case "saveData":
-                        responseData = new { success = true, received = request.payload };
+                    case "getRamStats":
+                        data = _hardwareMonitor.GetRamStats();
+                        break;
+                    case "getDiskStats":
+                        data = _hardwareMonitor.GetDiskStats();
                         break;
                     default:
-                        responseData = new { error = "Endpoint not found" };
+                        error = $"Endpoint '{endpoint}' not found in C#.";
                         break;
                 }
 
                 var responseMessage = new
                 {
-                    id = request.id,
-                    data = responseData
+                    id = id,
+                    data = data,
+                    error = error
                 };
 
-                string jsonResponse = JsonSerializer.Serialize(responseMessage);
-                webView.CoreWebView2.PostWebMessageAsJson(jsonResponse);
+                string jsonResponse = JsonConvert.SerializeObject(responseMessage);
+
+                if (webView?.CoreWebView2 != null)
+                {
+                    webView.CoreWebView2.PostWebMessageAsJson(jsonResponse);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error processing message: " + ex.Message);
+                var errorResponse = new
+                {
+                    id = id,
+                    data = (object)null,
+                    error = ex.Message
+                };
+
+                if (webView?.CoreWebView2 != null)
+                {
+                    webView.CoreWebView2.PostWebMessageAsJson(JsonConvert.SerializeObject(errorResponse));
+                }
             }
         }
-    }
-}
 
-public class WebMessageDto
-{
-    public string id { get; set; }
-    public string endpoint { get; set; }
-    public JsonElement payload { get; set; } 
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            _hardwareMonitor?.Dispose();
+            base.OnFormClosing(e);
+        }
+    }
 }
